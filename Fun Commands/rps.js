@@ -1,4 +1,5 @@
 const { Client, ChatInputCommandInteraction, ComponentType, ActionRowBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder } = require("discord.js")
+const ms = require("ms")
 
 module.exports = {
     name: "rps",
@@ -16,7 +17,7 @@ module.exports = {
 
         const Embed = new EmbedBuilder()
             .setColor("DarkOrange")
-            .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
+            .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
             .setDescription(`<@${user.id}> choose your move`)
 
         const row = new ActionRowBuilder().addComponents(
@@ -48,8 +49,11 @@ module.exports = {
         })
         const col = Page.createMessageComponentCollector({
             componentType: ComponentType.Button,
+            time: ms("10s")
         })
         col.on("collect", i => {
+
+            if (i.user.id !== user.id) return
 
             switch (i.customId) {
 
@@ -60,13 +64,13 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`Game tied\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Rock", inline: true },
-                                    { name: "My choice", value: "Rock", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`Game tied\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Rock", inline: true },
+                                        { name: "My choice", value: "Rock", inline: true }
+                                    )
                             ],
                             components: []
                         })
@@ -77,13 +81,13 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`You lost the game\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Rock", inline: true },
-                                    { name: "My choice", value: "Paper", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`You lost the game\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Rock", inline: true },
+                                        { name: "My choice", value: "Paper", inline: true }
+                                    )
                             ],
                             components: []
                         })
@@ -94,7 +98,7 @@ module.exports = {
                             embeds: [
                                 new EmbedBuilder()
                                     .setColor(`DarkOrange`)
-                                    .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
                                     .setDescription(`\`\`\`You won the game\`\`\``)
                                     .addFields(
                                         { name: "Your choice", value: "Rock", inline: true },
@@ -111,13 +115,13 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`You won the game\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Paper", inline: true },
-                                    { name: "My choice", value: "Rock", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`You won the game\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Paper", inline: true },
+                                        { name: "My choice", value: "Rock", inline: true }
+                                    )
                             ],
                             components: []
                         })
@@ -128,13 +132,13 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`Game tied\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Paper", inline: true },
-                                    { name: "My choice", value: "Paper", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`Game tied\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Paper", inline: true },
+                                        { name: "My choice", value: "Paper", inline: true }
+                                    )
                             ],
                             components: []
                         })
@@ -144,13 +148,13 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`You lost the game\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Paper", inline: true },
-                                    { name: "My choice", value: "Scissor", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`You lost the game\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Paper", inline: true },
+                                        { name: "My choice", value: "Scissor", inline: true }
+                                    )
                             ],
                             components: []
                         })
@@ -164,13 +168,13 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`You lost the game\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Scissor", inline: true },
-                                    { name: "My choice", value: "Rock", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`You lost the game\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Scissor", inline: true },
+                                        { name: "My choice", value: "Rock", inline: true }
+                                    )
                             ],
                             components: []
                         })
@@ -181,13 +185,13 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`You won the game\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Scissor", inline: true },
-                                    { name: "My choice", value: "Paper", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`You won the game\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Scissor", inline: true },
+                                        { name: "My choice", value: "Paper", inline: true }
+                                    )
                             ],
                             components: []
                         })
@@ -197,19 +201,30 @@ module.exports = {
                         return interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                .setColor(`DarkOrange`)
-                                .setAuthor({ name: "Rock Paper Scissor Game", iconURL: user.displayAvatarURL() })
-                                .setDescription(`\`\`\`Game tied\`\`\``)
-                                .addFields(
-                                    { name: "Your choice", value: "Scissor", inline: true },
-                                    { name: "My choice", value: "Scissor", inline: true }
-                                )
+                                    .setColor(`DarkOrange`)
+                                    .setAuthor({ name: "Rock Paper Scissor", iconURL: user.displayAvatarURL() })
+                                    .setDescription(`\`\`\`Game tied\`\`\``)
+                                    .addFields(
+                                        { name: "Your choice", value: "Scissor", inline: true },
+                                        { name: "My choice", value: "Scissor", inline: true }
+                                    )
                             ],
                             components: []
                         })
                     }
                 }
             }
+        })
+        col.on("end", (collected) => {
+
+            if (collected.size > 0) return
+
+            interaction.editReply({
+                embeds: [
+                    Embed.setDescription(`You didn't choosed your move`)
+                ],
+                components: []
+            })
         })
     }
 }
