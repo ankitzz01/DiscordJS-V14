@@ -1,3 +1,6 @@
+//Dependencies - ms (https://www.npmjs.com/package/ms)
+//Installation - npm i ms
+
 const { Client, ChatInputCommandInteraction, ComponentType, ActionRowBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder } = require("discord.js")
 const ms = require("ms")
 
