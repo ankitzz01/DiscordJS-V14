@@ -1,3 +1,5 @@
+//Know what servers your bot is in!
+
 const { ChatInputCommandInteraction, EmbedBuilder, Client } = require("discord.js")
 
 module.exports = {
