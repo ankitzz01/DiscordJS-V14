@@ -30,9 +30,6 @@ module.exports = {
             ], ephemeral: true
         })
 
-        const have = Member.permissions.toArray().length
-        const donthave = 41 - have
-
         const PermsEmbed = new EmbedBuilder()
             .setColor("Blue")
             .setTitle(`🛠 | Permissions`)
@@ -77,7 +74,7 @@ module.exports = {
             \nSendMessagesInThreads ${Member.permissions.has([PermissionFlagsBits.SendMessagesInThreads]) ? "✅" : "❌"}\
             \nUseEmbeddedActivities ${Member.permissions.has([PermissionFlagsBits.UseEmbeddedActivities]) ? "✅" : "❌"}\
             \nModerateMembers ${Member.permissions.has([PermissionFlagsBits.ModerateMembers]) ? "✅" : "❌"}\
-            \n\n${have} ✅ | ${donthave} ❌\`\`\``)
+            \n\`\`\``)
             .setFooter({ text: `${USER.tag}`, iconURL: Member.displayAvatarURL() })
             .setTimestamp()
         return interaction.reply({ embeds: [PermsEmbed] })
