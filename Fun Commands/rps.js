@@ -56,8 +56,6 @@ module.exports = {
         })
         col.on("collect", i => {
 
-            if (i.user.id !== user.id) return
-
             switch (i.customId) {
 
                 case "rock": {
