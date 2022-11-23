@@ -110,6 +110,7 @@ module.exports = {
                         })
                     }
                 }
+                    break;
                 case "paper": {
                     if (botchoice == "rock") {
 
@@ -161,6 +162,7 @@ module.exports = {
                         })
                     }
                 }
+                    break;
 
                 case "scissor": {
 
@@ -214,6 +216,7 @@ module.exports = {
                         })
                     }
                 }
+                    break;
             }
         })
         col.on("end", (collected) => {
