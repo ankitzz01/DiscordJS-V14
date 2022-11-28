@@ -1,6 +1,6 @@
 const { Client, ContextMenuCommandInteraction, ApplicationCommandType, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("discord.js")
-const DB = require("../../Structures/Schemas/ReportsDB")
-const ChannelDB = require("../../Structures/Schemas/reportChannel")
+const DB = require("../../Structures/Schemas/ReportsDB")//fix the paths accordingly
+const ChannelDB = require("../../Structures/Schemas/reportChannel")//fix the paths accordingly
 
 module.exports = {
     name: "Report",
